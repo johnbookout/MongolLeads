@@ -1,29 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>MongolLeads</title>
-    <!-- The callback parameter is required, so we use console.debug as a noop -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzrWM6w6V-EmS8npvJ-HSwTTscma3Po2A&callback=console.debug&libraries=maps,marker&v=beta">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzrWM6w6V-EmS8npvJ-HSwTTscma3Po2A&callback=initMap&libraries=places">
     </script>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      gmp-map {
-        height: 100%;
-      }
-
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+        #map {
+            height: 80vh;
+            width: 100%;
+        }
+        #form {
+            width: 300px;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
     </style>
-  </head>
-  <body>
-    <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="DEMO_MAP_ID">
-      <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="My location"></gmp-advanced-marker>
-    </gmp-map>
-  </body>
+</head>
+<body>
+    <h3>MongolLeads</h3>
+    <div id="map"></div>
+    <div id="form">
+        <h4>Pin Details</h4>
+        <label for="status">Status:</label>
+        <select id="status">
+            <option value="Not Home">Not Home</option>
+            <option value="Not Interested">Not Interested</option>
+            <option value="Sold">Sold</option>
+            <option value="Hot Lead">Hot Lead</option>
+            <option value="Revisit">Revisit</option>
+            <option value="Already Customer">Already Customer</option>
+            <option value="Not Qualified">Not Qualified</option>
+        </select><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name"><br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email"><br>
+        <label for="notes">Notes:</label>
+        <textarea id="notes"></textarea><br>
+        <button onclick="savePin()">Save Pin</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
